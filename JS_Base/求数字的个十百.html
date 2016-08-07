@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var arr = [];
+		var g,
+		    s,
+		    b;
+		for(var i = 100;i <= 999;i++){
+			b = parseInt(i/100);
+			s = parseInt(i%100/10);
+			g = parseInt(i%100%10);
+			if(Math.pow(g,3) + Math.pow(s,3) + Math.pow(b,3) == i)
+			{
+				arr.push(i);
+			}
+		}
+		console.log(arr);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

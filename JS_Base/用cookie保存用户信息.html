@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript">
+function Cookie()
+{
+	document.cookie="userName="+form1.userName.value;
+	document.cookie="password="+form1.pw.value;
+	if(document.cookie.length!=0)
+		alert("cookie为:"+document.cookie);
+	else
+		alert("没有cookie信息！");
+}
+
+function Check(form1)
+{
+	if(form1.userName.value=="")
+	{
+		alert("用户名不能为空！");
+		form1.userName.focus();
+		return false;	
+	}	
+	if(form1.pw.value=="")
+	{
+		alert("密码不能为空！");
+		form1.pw.focus();
+		return false;	
+	}
+	//Cookie();
+}
+</script>
+</head>
+
+<body onsubmit="return Check(form1)">
+<form action="" method="post" name="form1"> 
+<p>用户名：<input type="text" name="userName" /></p>
+<p>密码：<input type="text" name="pw" /></p>
+<input type="submit" name="submit" value="登陆" />
+<input type="reset" name="reset" value="取消" />
+</form>
+</body>
+</html>

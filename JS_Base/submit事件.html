@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>submit提交</title>
+	<script>
+	addEvent(window,'load',function(){
+		var fm = document.getElementById('myform');
+		var flag = false;
+		var evt = event || window.event;
+		addEvent(fm,'submit',function(evt){
+			e.preventDefault();
+			document.getElementById('sub').disabled = true;
+			if(flag === 'true')return;
+			flag = true;
+			alert('提交了！')
+			setTimeout(function(){
+				fm.submit();
+			},3000);
+		})
+	});
+	</script>
+</head>
+<body>
+	<form action="" id="myform">
+		<input type="text">
+		<input type="submit" value="提交" id="sub">
+	</form>
+</body>
+</html>

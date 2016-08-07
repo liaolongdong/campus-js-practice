@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模块模式总结</title>
+	<script src="js/require.js" type="text/javascript"></script>
+	<!--<script src="js/commonjs.js" type="text/javascript"></script>-->
+	<script>
+		/*//1、匿名闭包（Anonymous closure）
+		var globalVar = 'This is globalVar!';
+    	//作用：实现对变量的隐藏，避免全局变量污染
+    	(function (){
+    		//让这些变量在闭包作用域内变为私有（外界访问不到这些变量）
+    		var myGrades = [55,66,77,88,99,100];
+    		var myAverage = function(){
+    			var total = myGrades.reduce(function (accumulator,item){
+    				return accumulator + item;
+    			});
+    			return 'Your average grade is ' + total/myGrades.length + '.';
+    		}
+
+    		var failing = function (){
+    			var failingGrades = myGrades.filter(function(item){
+    				return item > 70;
+    			});
+    			return 'You failed ' + failingGrades.length + ' times.';
+    		}
+    		console.log(myAverage());
+    		console.log(failing());
+    		console.log(globalVar);
+    	}());
+    	//Your average grade is 80.83333333333333.
+    	//You failed 4 times.
+    	//This is globalVar!*/
+
+    	/*//2、全局导入（Global import）
+    	//类似于全局jQuery的全局导入,特点：将全局变量作为一个参数传入
+    	var globalVariable = [1,2,3,4,5,6];
+    	(function (globalVariable){
+    		//私有函数
+    		var privateFunc = function(){
+    			console.log('This is privateFunc!');
+    		};
+
+
+    		globalVariable.each = function(collection,iterator){
+    			if(Array.isArray(collection)){  //判断传入的是否为数组
+    				for(var i = 0;i < collection.length;i ++){
+    					iterator(collection[i],i,collection);
+    				}
+    			}else{   //collection如果是对象
+    				for(var key in collection){
+    					iterator(collection[key],key,collection);
+    				}
+    			}
+    		};
+
+
+    		globalVariable.filter = function(collection,test){
+    			var filtered = [];
+    			globalVariable.each(collection,function(item){
+    				if(test(item)){
+    					filter.push(item);
+    				}
+    			});
+    			return filtered;
+    		};
+
+
+    		globalVariable.map = function(collection,iterator){
+    			var mapped = [];
+    			globalVariable.each(collection,function(value,key,collection){
+    				mapped.push(iterator(value));
+    			});
+    			return mapped;
+    		};
+
+
+    		globalVariable.reduce = function(collection,iterator,accumulator){
+    			var startingValueMissing = accumulator === undefined;
+
+				globalVariable.each(collection,function(item){
+					if(startingValueMissing){
+						accumulator = item;
+						startingValueMissing = false;
+					}else{
+						accumulator = iterator(accumulator,item);
+					}
+				});
+
+				return accumulator;
+    		};
+
+    	})(globalVariable);*/
+
+
+		/*var myGradesCalculate = (function (){
+			//私有变量
+			var myGrades = [33,44,55,66,77,88,99,100];
+
+			return {
+				average : function(){
+					//console.log(this === myGradesCalculate);
+					var total = myGrades.reduce(function(accumulator,item){
+						return accumulator + item;
+					});
+
+					return 'Your average grade is ' + total/myGrades.length + ' .';
+				},
+
+				failing : function(){
+					var failingGrades = myGrades.filter(function(item){
+						return item > 70;
+					});
+
+					return 'You failed ' + failingGrades.length + ' times.';
+				}
+			}
+
+		})();
+		//奇怪，为什么不输出啊？？？？？？？？？？？
+		myGradesCalculate.average();
+		myGradesCalculate.failing();*/
+
+
+		/*//暴露模块模式
+		var myGradesCalculate = (function(){
+			//私有变量
+			var myGrades = [33,44,55,66,77,88,99,100];
+
+			//私有方法
+			var average = function(){
+				var total = myGrades.reduce(function(curValue,nextValue){
+					return curValue + nextValue;
+				});
+
+				return 'Your average grade is ' + total/myGrades.length + ' .';
+			};
+
+			var  failing = function(){
+				var failingGrades = myGrades.filter(function(item){
+					return item >= 70;
+				});
+
+				return 'You failed ' + failingGrades.length + ' times!';
+			};
+
+
+			return {
+				average : average,
+				failing : failing 
+			};
+
+
+		})();
+
+		myGradesCalculate.average();
+		myGradesCalculate.failing();*/
+
+
+		/*//CommonJS,同步加载，服务器优先，NodeJS就是基于CommonJSde 
+		function myModule(){
+			this.hello = function(){
+				return 'hello';
+			}
+
+			this.goodbye = function(){
+				return 'goodbye';
+			}
+		}
+
+		//模块导出
+		module.exports = myModule;
+
+		//使用require引入
+		var myModule = require('myModule');
+
+		var myModuleinstance = new myModule();
+		myModuleinstance.hello();
+		myModuleinstance.goodbye();*/
+
+		/*//myModule
+		define([],function(){
+
+			return {
+				hello : function(){
+					console.log('hello');
+				},
+				goodbye : function(){
+					console.log('goodbye');
+				}
+			};
+		});*/
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

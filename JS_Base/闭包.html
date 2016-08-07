@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+	<script>
+	var a = 3;
+	var b = 4;
+	function outer(){
+	        var a = 5;
+	        var c = 7;
+	        var d = 8;
+	        console.log(a);//5，outer内部的
+	        console.log(b);//4，全局的
+	        var inner = function(){
+	                var c  = 6;
+	                console.log(b);//4，全局的
+	                console.log(c);//6，inner内部的
+	                console.log(d);//8，outer内部的
+	                //console.log(e); //报错，没找到
+	                b = 0 //找到全局的
+	                //d = "xxx";
+	                d = 'aaa';
+	                f = 'bbb';
+	        }
+	        inner();
+	        console.log(b);//0，找全局的b
+	        console.log(c);
+	        console.log(d);//"xxx", outer内部的
+	        console.log(f);
+	}
+	outer();
+
+	/*function a(){
+	        var x = 0;
+	        return function(){
+	                x++;//此函数的作用域链能看到x
+	                console.log(x);
+	        }
+	}
+
+	var fun = a();//a返回的是个函数，保存起来没问题。
+	fun()//打印1
+	fun()//打印2
+	fun()*/
+
+	/*function a(){
+	        var x = 0;
+	        var y = {name :"张三"};
+	        var f1 = function(){
+	            x ++;
+	            console.log(x);
+	        }
+	        var f2 = function(name){
+	                y.name = name;
+	                console.log(name);
+	        }
+	        return [f1,f2];
+	}
+	var b= a();
+	b[0]();
+	b[0]("李四");*/
+
+	/*function a(){
+	        var name = null;
+	        var f1 = function(n){
+	                name = n;
+	        };
+	        var f2 = function(){
+	                return name;
+	        };
+	        return {
+	                setName : f1,
+	                getName : f2
+	        }
+	}
+	var o =a();
+	o.setName("老姚");
+	var myName = o.getName();
+	console.log(myName);*/
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

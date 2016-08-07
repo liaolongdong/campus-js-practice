@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用闭包生成唯一ID和设计单例模式（模块模式）</title>
+	<script>
+	//生成唯一ID
+	/*function uniqueId(){
+		var id = 0;
+		return function(){
+			id ++;
+			return id;
+		}
+	}
+	var temp = uniqueId();
+	console.log(temp());
+	console.log(temp());
+	console.log(temp());*/
+	/*function uniqueID(){
+		var num = 0;
+		return function(){
+			return num ++;
+		}
+	}
+	console.log(uniqueID());
+	var temp = uniqueID();
+	console.log(temp());
+	console.log(temp());
+	console.log(temp());*/
+	//利用闭包设计单例模式（模块模式）
+	var Mynamespace = {};
+	Mynamespace.Singleton = (function(){
+		//私有成员
+		var privateAttr = 'false';
+		var privateMethod = function(){
+			console.log(this);//Object{}
+		}
+		return {
+			publicAttr : 'true',
+			publicMethod : function(){
+				console.log(this.publicAttr);//'true'
+			}
+		}
+	})();
+	Mynamespace.Singleton.publicAttr;//'true'
+	Mynamespace.Singleton.publicMethod();//'true'
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

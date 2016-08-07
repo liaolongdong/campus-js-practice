@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript">
+
+function formatNum(str,len)
+{
+	var strLen=str.length;
+	for(i=0;i<len-strLen;i++)
+	{
+		str="0"+str;	
+	}	
+	return str;
+}
+</script>
+
+<script language="javaxcript">
+function deal()
+{
+	if(form1.str.value=="")
+	{
+		alert("请输入要格式化的数字！");
+		form1.str.focus();
+		return false;	
+	}	
+	if(isNaN(form1.str.value))
+	{
+		alert("您输入的数字不正确！");
+		form1.str.value.focus();
+		return false;	
+	}
+	if(form1.len.value=="")
+	{
+		alert("请输入格式后的长度！");
+		form1.len.focus();
+		return false;	
+	}
+	if(isNaN(form1.len.value)
+	{
+		alert("您输入的的格式化长度不正确！");
+		form1.len.focus();
+		return false;	
+	}
+	form1.lastStr.value=formatNum(form1.str.value,form1.len.value);
+}
+</script>
+</head>
+
+<body>
+<form action="" name="form1" method="post">
+
+请输入要格式化的数字：<br />
+<input type="text" name="str" /><br /><br />
+
+请输入格式后的数字长度：<br />
+<input type="text" name="len" /><br /><br />
+
+格式化的数字：<br />
+<input type="text" name="lastStr" /><br /><br />
+
+<input type="button" name="submit" value="转换" onclick="deal()" />
+<input type="button" name="reset" value="刷新" onclick="window.location.reload()"/>
+</form>
+</body>
+</html>

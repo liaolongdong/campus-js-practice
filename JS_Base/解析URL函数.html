@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>解析URL函数</title>
+</head>
+<script>
+	//解析URL函数
+   	function parseURL(url){
+   	var a = document.createElement('a');
+   	a.href = url;
+   	console.log(a);
+   	return {
+   		console.log(this);
+      	source : url,
+      	protocol : a.protocol.replace(':',''),
+      	host : a.hostname,
+      	query : a.search.substring(1),
+      	params : (function(){
+        	var ret = {},seg = a.search.replace(/^\?/,'').split('&'),s;
+         	for(var i = 0,len = seg.length;i < len ; i ++){
+              	if(!seg[i]){
+                 	continue;
+              	}
+              	s = seg[i].split('=');
+              	ret[s[0]] = s[1];
+         	}
+         	return ret;
+      	})(),
+      	file : (a.pathname.match(/\/([^\/?#]=)$/i) || [,''])[1], 
+      	hash : a.hash.replace('#',''),
+      	path : a.pathname.replace(/^([^\/])/,'/$1'),
+      	segments : a.pathname.replace(/^\//,'').split('/')
+   	};
+}
+</script>
+<body>
+	
+</body>
+</html>

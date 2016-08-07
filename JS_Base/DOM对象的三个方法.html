@@ -1,0 +1,13 @@
+<MyTag name=text1>1234</MyTag>
+<MyTag name=text1>1234</MyTag>
+<MyTag name=text2>2333</MyTag>
+<MyTag name=text3>4354</MyTag>
+<MyTag name=text4>4355</MyTag>
+<MyTag name=text5 id=MyTest description="这是测试用的，读取节点的属性！">4554</MyTag>
+
+<script language="javascript" type="text/javascript">
+nodes=document.getElementsByTagName("MyTag");
+nodes1=document.getElementsByName("text1");
+nodes2=document.getElementById("MyTest");
+alert("getElementsByTagName:"+nodes.length+"\ngetElementsByName:"+nodes1.length+"\ngetElementById:"+nodes2.name);
+</script>

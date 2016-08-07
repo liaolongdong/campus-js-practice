@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重的两种常用方法</title>
+	<script>
+    	//第一种最常用的方法
+    	function unique_one(arr){
+    		var tempArr = [];
+    		for (var i = 0,len = arr.length;i < len;i ++){
+    			if(tempArr.indexOf(arr[i]) === -1){  //如果临时数组中没有则添加，反之，不添加
+    				tempArr.push(arr[i]);
+    			}
+    		}
+    		return tempArr;
+    	}
+
+    	//第二种方法
+    	function unique_two(arr){
+    		var obj = {},tempArr = [];//创建一个临时空对象和临时数组
+    		for(var i = 0,len = arr.length;i < len; i ++){
+    			if(!obj[arr[i]]){ //如果对象中不存在该属性则添加到临时数组，并对该属性进行赋值
+    				//console.log(arr[i]);
+    				tempArr.push(arr[i]);
+    				obj[arr[i]] = 1;
+    			}
+    		}
+    		return tempArr;
+    	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

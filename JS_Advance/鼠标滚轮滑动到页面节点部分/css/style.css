@@ -1,0 +1,144 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+}
+body {
+	font-size:16px;
+	font-family: 微软雅黑, Tahoma, Helvetica, Arial, sans-serif;
+	color:#FFF;
+}
+ul li{
+	list-style: none;
+	display: inline-block;
+	margin:10px;
+}
+h1 {
+	font-size:30px;
+	text-align: center;
+	padding:20px 0;
+}
+/*主页面*/
+.panel {
+	border-bottom:1px solid #666;
+	overflow: hidden;
+}
+.one {
+	background:#9370D8;
+}
+.two {
+	background:#7CFC00;
+}
+.three {
+	background:#FF00FF;
+}
+.four {
+	background:#00FFFF;
+}
+.five {
+	background:#BDB76B;
+}
+.inner {
+	width:960px;
+	margin:0 auto;
+}
+.one .inner{
+	width:100%;
+	height:100%;
+	background: url(../images/bg_1.jpg) center center no-repeat;
+}
+.two .inner{
+	width:100%;
+	height:100%;
+	background: url(../images/bg_2.jpg) center center no-repeat;
+}
+.three .inner{
+	width:100%;
+	height:100%;
+	background: url(../images/bg_3.jpg) center center no-repeat;
+}
+.four .inner{
+	width:100%;
+	height:100%;
+	background: url(../images/bg_4.jpg) center center no-repeat;
+}
+.five .inner{
+	width:100%;
+	height:100%;
+	background: url(../images/bg_5.jpg) center center no-repeat;
+}
+.back{
+	position:relative;
+}
+.back .to_top{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+}
+.five .to_top a{
+	text-decoration:none;
+	display: block;
+	color:blue;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	background:#98FB98;
+	width:30px;
+	height: 130px;
+}
+
+/*左侧区域*/
+.aside_left{
+	position:fixed;
+	top:0px;
+	left:0px;
+	font-size: 20px;
+	background: #ccc;
+	display:inline-block;
+}
+.aside .hide{
+	display: none;
+	float: left;
+	width:60px;
+	height:670px;
+	background: #F0E68C;
+}
+.aside .show{
+	float:left;
+	width: 20px;
+	height:670px;
+	background: #E6E6FA;
+}
+/*右侧区域*/
+.aside_right{
+	position: fixed;
+	width:26px;
+	top:40%;
+	right:30px;
+	margin-top: -60px;
+	background: rgba(0,0,0,0.3);
+}
+.aside_right a{
+	background:url(../images/dot.png) 0 -18px no-repeat;
+	padding-left: 18px;
+	margin: 5px;
+	text-decoration: none;
+	display:block;
+	height:20px;
+}
+.aside_right .selected{
+	background:url(../images/dot.png) 0 0 no-repeat;
+	padding-left: 18px;
+	margin: 5px;
+	text-decoration: none;
+	display:block;
+	height:20px;
+}
+.aside_right a:hover{
+	background:url(../images/dot.png) 0 0 no-repeat;
+	padding-left: 18px;
+	margin: 5px;
+	text-decoration: none;
+	display:block;
+	height:20px;
+}

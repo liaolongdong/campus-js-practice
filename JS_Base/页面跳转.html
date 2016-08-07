@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script language="javascript">
+var num=5;
+function go()
+{
+	if(--num==0)
+		window.location.href="http://www.taobao.com/"
+	else
+		info.innerHTML="浏览器将在"+num+"秒钟后跳转到淘宝首页";
+}
+setInterval("go()",1000);
+</script>
+<label id="info" >
+</body>
+</html>

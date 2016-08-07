@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框全选、全不选</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(function(){
+			$('#checkAll').click(function(){
+				$('[name=item]:checkbox').attr("checked",this.checked);
+			});
+		});
+	</script>
+</head>
+<body>
+	<input type="checkbox" id="checkAll">全选/全不选<br/>
+	<input type="checkbox" name="item">项目1<br/>
+	<input type="checkbox" name="item">项目2<br/>
+	<input type="checkbox" name="item">项目3<br/>
+	<input type="checkbox" name="item">项目4<br/>
+</body>
+</html>

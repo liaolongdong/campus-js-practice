@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>简易计算器</title>
+<style type="text/css">
+body {
+	background-color: #FFF;
+	background-image: url(images/background.jpg);
+}
+.title{
+	color: #0F0;
+	font-size: 24px;
+}
+.txt{
+	color:#000;
+	font-size:18px;
+}
+</style>
+<script language="javascript">
+function check(n)
+{
+	if(n==1)
+	{
+		if(form1.num1.value=="")
+		{	
+			alert("请输入第一个数字！");
+			return false;
+		}
+	}
+	if(n==2)
+	{
+		if(form1.num2.value=="")
+		{
+			alert("请输入第二个数字！");
+			return false;
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="form1"><br />
+<pre>
+
+
+
+
+</pre>
+<table width="200" border="0" align="center">
+  <tr>
+    <td colspan="4" align="center" class="title"><h3>简易计算器</h3></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><input name="num1" type="text"  value="" maxlength="20" placeholder="请输入第一个数字" onblur="check(1)" onkeyup="value=value.replace(/[^\-?\d.]/g,'')"/></td>
+    <td><select name="operator" size="1">
+      <option value="+">+（加）</option>
+      <option value="-">-（减）</option>
+      <option value="*">*（乘）</option>
+      <option value="/">/（除）</option>
+    </select></td>
+    <td><input name="num2" type="text" value="" maxlength="20" placeholder="请输入第二个数字"/ onblur="check(2)"  onkeyup="value=value.replace(/[^\-?\d.]/g,'')"></td>
+    <td><input name="calculate" type="button" value="计算" onclick="showResult()"></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">&nbsp;</td>
+  </tr>
+  <tr>
+  	<td colspan="4" id="showResult" class="txt">显示结果：</td>
+  </tr>
+</table>
+</form>
+<script language="javascript">
+function showResult()
+{
+	var num1,num2,operator,result;
+	num1=document.form1.num1.value;
+	num2=document.form1.num2.value;
+	operator=document.form1.operator.value;
+	if(operator=="+")
+		result=parseFloat(num1)+parseFloat(num2);
+	else if(operator=="-")
+		result=num1-num2;
+	else if(operator=="*")
+		result=num1*num2;
+	else if(operator=="/")
+		result=num1/num2;
+	if(num1!=""&&num2!="")
+		result="显示结果："+num1+operator+num2+" = "+result;
+	else
+		result="显示结果："+result;
+	document.getElementById("showResult").innerHTML=result;
+}
+</script>
+</body>
+</html>

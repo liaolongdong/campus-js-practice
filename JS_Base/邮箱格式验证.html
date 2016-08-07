@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script language="javascript" type="text/javascript" charset="gb2312">
+function checkEmail(obj)
+{
+	var emailUrl=obj.email.value;
+	var regExp=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+	if(!regExp.exec(emailUrl))
+	{
+		alert("您输入的格式有误，可能是忘记输@或者.字符了，请重新输入！");
+		obj.email.focus();	
+	}	
+	else
+	{
+		alert("输入正确！");
+		return true;	
+	}
+}
+</script>
+<p align="center">验证电子邮箱地址是否正确</p>
+<form name="form1" onsubmit="return checkEmail(this)">     <!--this相当于form1-->
+电子邮箱地址：<input name="email" type="text" />
+<input type="submit" value="确定" />
+</form>
+</body>
+</html>

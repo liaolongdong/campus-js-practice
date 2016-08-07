@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数组常用方法</title>
+</head>
+
+<body>
+<script language="javascript">
+//创建数组
+var array=["a","b","c","d"];
+var arrayOne=new Array("Peter","Tom","Pode");
+var arrayTwo=[1,2,3,4,5,6,7,8];
+//push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度
+document.writeln("使用push()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.push("Lily","nike")+"<br/>");
+document.writeln("使用push()方法之后："+arrayOne+"<br/>");
+//unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度
+document.writeln("使用unshift()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.unshift("Rose")+"<br/>");
+document.writeln("使用unshift()方法之后："+arrayOne+"<br/>");
+array[3]="Jack";
+document.writeln(array+"<br/>");
+delete array[3];
+document.writeln(array+"<br/>");
+//遍历数组
+for(n in array){
+	document.write(array[n]+" ");
+	}
+//pop() 方法用于删除并返回数组的最后一个元素
+document.writeln("使用pop()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.pop()+"<br/>");
+document.writeln("使用pop()方法之后："+arrayOne+"<br/>");
+//把数组转换为字符串，并返回结果
+document.writeln("使用toString()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayTwo.toString()+"<br/>");
+document.writeln("使用toString()方法之后："+arrayOne+"<br/>");
+//删除并返回数组的第一个元素
+document.writeln("使用shift()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.shift()+"<br/>");
+document.writeln("使用shift()方法之后："+arrayOne+"<br/>");
+//
+document.writeln("使用concat()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.concat(arrayTwo)+"<br/>");
+document.writeln("使用concat()方法之后："+arrayOne+"<br/>");
+//
+document.writeln("使用valueOf()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.valueOf()+"<br/>");
+document.writeln("使用valueOf()方法之后："+arrayOne+"<br/>");
+//从某个已有的数组返回选定的元素
+document.writeln("使用slice()方法之前："+arrayOne+"<br/>");
+document.writeln(arrayOne.slice(1,2)+"<br/>");
+document.writeln("使用slice()方法之后："+arrayOne+"<br/>");
+//删除元素，并向数组添加新元素
+document.writeln("使用splice()方法之前："+arrayTwo+"<br/>");
+document.writeln(arrayTwo.splice(1,2,100,200)+"<br/>");
+document.writeln("使用splice()方法之后："+arrayTwo+"<br/>");
+
+var array2=[1,2,3,4,5,6,7,8,9];
+document.write(array2.reverse()+"<br>");
+document.write(array2.sort()+"<br>");
+document.write(array2.join("@"));
+</script>
+</body>
+</html>

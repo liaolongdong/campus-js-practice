@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>随机冒泡</title>
+	<style>
+		div{
+			background-color:#ddd;
+			background-position:-700px -377px;
+		}
+	</style>
+ </head>
+ <body>
+   <div style="width:1290px;height:756px;margin:0px auto;border:1px solid #ddd;">
+	<canvas width="1290px" height="756px" id="cavs"></canvas>
+  </div>
+   <script>
+	var canvas=document.getElementById("cavs");
+	var context=canvas.getContext("2d");
+	const WIDTH=canvas.width;
+	const HEIGHT=canvas.height;
+	
+	//初始数据对象
+	var start={
+		circles:[],
+		num:null,
+		timer:null,
+		DURATION:60,
+		begin:function(){//初始化数据
+			//
+			//调用生成函数
+			this.createCircle();
+		},
+		createCircle:function(){//生成气泡
+			for (var i=0;i<WIDTH/3 ;i++ )
+			{	
+				var c=new Circle()
+				this.circles.push(c);
+			}
+			//调用画圆方法
+			setInterval(this.drawCircle.bind(this),this.DURATION);
+		},
+		drawCircle:function(){
+			//刷新屏幕
+			context.clearRect(0,0,WIDTH,HEIGHT);
+			for(var key in this.circles)//画气泡
+			{
+				this.circles[key].draw();
+			}
+		}
+	}
+	//气泡构造器
+	function Circle(){
+		//留住this
+		var me=this;
+		
+		//生成随机数的方法
+		function rand(){
+			//随机r 3~6
+			me.attr.r=Math.floor(Math.random()*3+3);
+			//随机x r~width-r
+			me.attr.x=Math.floor(Math.random()*(window.WIDTH-2*me.attr.r)+me.attr.r);
+			//随机y height-100~height-r
+			me.attr.y=Math.floor(Math.random()*(100-me.attr.r)+window.HEIGHT-100);
+			//随机color
+			me.attr.ColR=Math.floor(Math.random()*255);
+			me.attr.ColG=Math.floor(Math.random()*255);
+			me.attr.ColB=Math.floor(Math.random()*255);
+			
+			//随机alpha
+			me.attr.alpha=Math.random()*0.4+0.05;
+			//随机速度增量vector  1~10
+			me.attr.vector=Math.floor(Math.random()*4+1);
+		}
+
+		//生成一个保存circle所有的属性集合的对象attr,同时初始化一次圆的属性
+		(function(){
+			me.attr={};
+			rand();
+			//console.log(me.attr.red);
+		}());
+		//画图的方法
+		me.draw=function(){
+			//如果透明，则重新生成
+			if (me.attr.alpha<0.01)
+			{
+				rand();
+			}
+			context.beginPath();
+			context.arc(me.attr.x, me.attr.y, me.attr.r, 0, Math.PI*2);
+			context.closePath();
+
+			//彩色
+			context.fillStyle="rgba("+me.attr.ColR+","+ me.attr.ColB +","+me.attr.ColB +","+me.attr.alpha +")";
+			context.fill();
+
+			me.attr.y-=me.attr.vector;
+			me.attr.alpha-=0.008;
+		}
+	}
+	window.onload=function(){
+		start.begin();
+	}
+   </script>
+ </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript">
+function checkName(name)
+{
+	var regName=/\u4e00-\u9fa5/;
+	
+	if(regName.test(name)==true)
+	{
+		return true;
+	}
+	else
+	{
+		alert("真实姓名只能输入中文字符！");
+		form1.name.focus();
+		return;
+	}
+	
+}
+
+
+function checkDate(date)
+{
+	var regDate=/\d{4}[年|-|\/][01-12][月|-|\/][00-31][日|-|\/]/;
+	
+	if(regDate.test(date))
+	{
+		return true;
+	}
+	else
+	{
+		alert("您输入的日期的格式有误！请重新输入！");
+		form1.date.focus();
+		return;
+	}
+	
+}
+
+function checkId(uid)
+{
+	var regId=/\d{17}[\d|X]|\d{15}/;
+	
+	if(regId.test(uid))
+	{
+		return true;
+	}
+	else
+	{
+		alert("您输入的身份证号不合法！请重新输入！");
+		form1.uid.focus();
+		return;
+	}
+	
+}
+
+function checkQQ(qq)
+{
+	var regQQ=/[1-9]\d{4-10}/;
+	
+	if(regQQ.test(qq))
+	{
+		return true;
+	}
+	else
+	{
+		alert("您输入的QQ号不合法！请重新输入！");
+		form1.qq.focus();
+		return;
+	}
+}
+
+function checkEmail(email)
+{
+	var regEmail=/\w+([-+.]\w+)*@\w+([-.]\w+)*([-.]\w+)*/;
+	
+	if(regEmail.test(email))
+	{
+		return true;
+	}
+	else
+	{
+		alert("您输入的email格式不正确！请重新输入！");
+		form1.email.focus();
+		return;
+	}
+}
+
+function checkpNum(phoneNum)
+{
+	var regpNum=/1\d{10}|\d{7}/;
+	
+	if(regpNum.test(phoneNum))
+	{
+		return true;
+	}
+	else
+	{
+		alert("您输入的手机号不合法！请重新输入！");
+		form1.phoneNum.focus();
+		return;
+	}
+}
+
+function checkYB(youbian)
+{
+	var regYB=/\d{6}/;
+	
+	if(regpYB.test(youbian))
+	{
+		return true;
+	}
+	else
+	{
+		alert("您输入的邮编号不正确！请重新输入！");
+		form1.youbian.focus();
+		return;
+	}
+}
+
+
+
+</script>
+
+<script language="javascript">
+function checkForm(form)
+{
+	for(i=0;i<form1.length;i++)
+	{
+		if(i==5||i==7)
+			{continue;}
+		if(form1.elements[i].value=="")
+			{alert(form1.elements[i].title+"不能为空！");return false;}	
+	}	
+}
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="form1">
+<table width="522" height="237" border="1" align="center">
+  <tr>
+    <td height="40" colspan="4" align="center">用正则表达式进行表单验证</td>
+    </tr>
+  <tr>
+    <td width="92" height="23"><div align="center">真实姓名：</div></td>
+    <td width="140"><div align="center"><input type="text" name="name" title="真实姓名" size="20" maxlength="50" onblur="checkName(form1.name.value)" /> </div></td>
+    <td width="90"><div align="center">籍&nbsp;&nbsp;&nbsp;&nbsp;贯：</div></td>
+    <td width="172"><div align="center"><input type="text" name="jiguan" title="籍贯" size="20" maxlength="50" /></div></td>
+  </tr>
+  <tr>
+    <td height="26"><div align="center">性&nbsp;&nbsp;&nbsp;&nbsp;别：</div></td>
+    <td><div align="center">男<input type="radio"  name="boy"  checked/> 
+      女
+          <input type="radio" " name="girl" /></div></td>
+    <td><div align="center">出生日期：</div></td>
+    <td><div align="center">
+      <input type="text" name="date" id="date" title="出生日期" size="20" maxlength="50"/ onblur="checkDate(form1.date.value)"  >
+    </div></td>
+  </tr>
+  <tr>
+    <td height="25"><div align="center">身份证号：</div></td>
+    <td><div align="center">
+      <input type="text" name="uid" id="uid" title="身份证号" size="20" maxlength="50" onblur="checkId(form1.uid.value)"/>
+    </div></td>
+    <td><div align="center">邮政编码：</div></td>
+    <td><div align="center">
+      <input type="text" name="youbian" id="youbian" title="邮编" size="20" maxlength="50" onblur="checkYB(form1.youbian.value)" />
+    </div></td>
+  </tr>
+  <tr>
+    <td height="23"><div align="center">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</div></td>
+    <td><div align="center">
+      <input type="text" name="email" id="email" title="邮箱" size="20" maxlength="50" onblur="checkEmail(form1.email.value)"  />
+    </div></td>
+    <td><div align="center">Q&nbsp;&nbsp;&nbsp;&nbsp; Q：</div></td>
+    <td><div align="center">
+      <input type="text" name="qq" id="qq" title="QQ" size="20" maxlength="50" onblur="checkQQ(form1.qq.value)"/>
+    </div></td> 
+  </tr>
+  <tr>
+    <td height="46"><div align="center">联系方式：</div></td>
+    <td><div align="center">
+      <input type="text" name="phoneNum" id="phoneNum"  title="联系方式"size="20" maxlength="50" onblur="checkpNum(form1.phoneNum.value)"/>
+    </div></td>
+    <td><div align="center">家庭住址：</div></td>
+    <td><div align="center">
+      <textarea name="address" id="address"  title="家庭住址" cols="20" rows="3"></textarea>  
+    </div></td>
+  </tr>
+  <tr>
+    <td height="36" colspan="4"><div align="center">
+      <input type="submit" name="button" id="button" value="提交" onclick="checkForm(form1)" />
+      <input type="reset" name="button2" id="button2" value="重置" />
+    </div></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>格式化数字</title>
+	<script>
+		function numFormat(num,scale){
+		   var numStr = num.toString();
+		   console.log(numStr);
+		   var numArr = numStr.split('.');
+		   console.log(numArr);
+		   var xiaoshuStr = numArr[1];
+		   console.log(xiaoshuStr);
+		   var len = xiaoshuStr.length;
+		   var result;
+		   if(len <= scale){
+		      var addZero = scale - len;
+		      console.log(addZero);
+		      var zeroStr = '';
+		      for(var i = 0; i < addZero; i ++){
+		         zeroStr += '0';
+		      }
+		      console.log(zeroStr);
+		      xiaoshuStr += zeroStr;
+		      console.log(xiaoshuStr);
+		      result = numArr[0] + '.' + xiaoshuStr;
+		      result = Number(result);
+		      return result;
+		   }else{
+		      result = numArr[0] + '.' + numArr[1].toString().substring(0,scale);
+		      result = Number(result);
+		      return result;
+		   }
+		}
+		numFormat(1.3333,6);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

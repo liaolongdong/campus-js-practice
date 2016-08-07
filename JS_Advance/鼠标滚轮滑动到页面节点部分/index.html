@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>基于jQuery鼠标滚轮滑动到页面节点部分</title>
+    <!--[if lt IE 9]>
+    <script src="html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<aside class="aside_left">
+		<ul>
+			<li><div class="hide">invisible</div></li>
+			<li><div class="show">visible</div></li>
+		</ul>
+	</aside>
+	<aside class="aside_right">
+		<div>
+			<a href="#one" class="selected"></a>
+			<a href="#two"></a>
+			<a href="#three"></a>
+			<a href="#four"></a>
+			<a href="#five"></a>
+		</div>
+	</aside>
+    <section class="panel one" data-section-name="one">
+        <div class="inner">
+            <h1>One</h1>
+        </div>
+    </section>
+    <section class="panel two" data-section-name="two">
+        <div class="inner">
+            <h1>Two</h1>
+        </div>
+    </section>
+    <section class="panel three" data-section-name="three">
+        <div class="inner">
+            <h1>Three</h1>
+        </div>
+    </section>
+    <section class="panel four" data-section-name="four">
+        <div class="inner">
+            <h1>Four</h1>
+        </div>
+    </section>
+    <section class="panel five" data-section-name="five">
+        <div class="inner">
+            <h1>Five</h1>
+        </div>
+        <div class="back">
+        	<div class="to_top"><a href="#top">&and;返回顶部</a></div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.scrollify.min.js"></script>
+    <script>
+        $(function () {
+
+           	$(".panel").css({ "height": $(window).height() });
+           	$(".aside_left").css({ "height": $(window).height() });
+           	
+            var timer;
+
+            $(window).resize(function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    $(".panel").css({ "height": $(window).height() });
+                }, 40);
+            });
+
+            $.scrollify({
+                section: ".panel"
+            });
+
+            $(".aside_right a").click(function (e) {
+                e.preventDefault();
+                $.scrollify("move", $(this).attr("href"));
+                $(this).siblings().removeClass("selected");
+            	$(this).addClass("selected");
+            });
+
+          /* var mousewheel = document.all?"mousewheel":"DOMMouseScroll";
+           $(".aside_right div")
+		        .on("a","mousewheel", function(event) {
+		        	var index=$(".selected").index();
+		        	if(index>0){
+		        		$(".selected").removeClass("selected");
+		        		$("a").eq(index+1).addClass("selected");
+		        	}    
+		        }).on("a","mousewheel", function(event) {
+		        	var index=$(".selected").index();
+		        	if(index>=4){
+		        		$(".selected").removeClass("selected");
+		        		$("a").eq(index-1).addClass("selected");
+		        	}    
+		        });*/
+
+
+            // 显示/隐藏
+            $(".aside_left").hover(function(){
+            	$(".hide").show();
+            },function(){
+            	$(".hide").hide();
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript" type="text/javascript">
+function getNodes()
+{
+	for(n=0;n!=document.documentElement.childNodes.length;n++)
+	{
+		var text="";
+		Nodes="";
+		if(document.documentElement.childNodes[n].nodeName=="body")
+		{
+			nodes=document.documentElement.childNodes[n].childNodes;
+			for(m=0;m!=nodes.lenth;m++)
+			{
+				text+="\n"+nodes[m].nodeName;	
+			}	
+			text="<body>节点下的所有子节点为："+text;
+			alert(text);
+			break;
+		}	
+	}	
+}
+</script>
+</head>
+
+<body onload="getNodes()">
+<h1>DOM编程,访问节点元素的所有子节点</h1>
+<h2>XML文件在浏览器中也可以使用DOM接口来处理<h2>
+<P>测试</P>
+</body>
+</html>

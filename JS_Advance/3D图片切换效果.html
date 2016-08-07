@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.wrap {
+			width: 1200px;
+			height: 460px;
+			overflow: hidden;
+			position: relative;
+			margin: 0 auto;
+		}
+		
+		.wrap li {
+			transition: all ease 0.6s;
+			-webkit-transition: all ease 0.6s;
+			-moz-transition: all ease 0.6s;
+			-o-transition: all ease 0.6s;
+			position: absolute;
+			left: 50%;
+			list-style: none;
+			-webkit-filter: brightness(0.5);
+		}
+		
+		.wrap li img {
+			width: 100%;
+		}
+		
+		.wrap li.current {
+			transition: all ease 0.4s;
+			-webkit-transition: all ease 0.4s;
+			top: 0;
+			-webkit-filter: brightness(1.0);
+			margin-left: -390px;
+			z-index: 5;
+		}
+		
+		.wrap li.next,
+		.wrap li.pre {
+			width: 640px;
+			top: 25px;
+			z-index: 3;
+		}
+		
+		.wrap li.next-r,
+		.wrap li.pre-l {
+			width: 560px;
+			top: 48px;
+			z-index: 1;
+		}
+		
+		.wrap li.next {
+			margin-left: -260px;
+		}
+		
+		.wrap li.next-r {
+			margin-left: -135px;
+		}
+		
+		.wrap li.pre {
+			margin-left: -435px;
+		}
+		
+		.wrap li.pre-l {
+			margin-left: -480px;
+		}
+		
+		.wrap a {
+			width: 35px;
+			height: 35px;
+			top: 50%;
+			margin-top: -16px;
+			display: block;
+			position: absolute;
+			background: url(http://heart.woniu.com/static/web20151014/src/images/graduation_dir.png) no-repeat;
+		}
+		
+		.wrap a.pre-btn {
+			left: 0;
+			background-position: 0 0;
+		}
+		
+		.wrap a.next-btn {
+			right: 0;
+			background-position: 0 -33px;
+		}
+	</style>
+
+	<body>
+		<div class="wrap">
+			<a href="javascript:;" class="btn next-btn"></a>
+			<a href="javascript:;" class="btn pre-btn"></a>
+			<ul style="position:relative">
+				<li class="current"><img src="http://heart.woniu.com/static/web20151014/src/images/img1.jpg" alt="" /></li>
+				<li class="next"><img src="http://heart.woniu.com/static/web20151014/src/images/img2.jpg" alt="" /></li>
+				<li class="next-r"><img src="http://heart.woniu.com/static/web20151014/src/images/img3.jpg" alt="" /></li>
+				<li class="pre-l"><img src="http://heart.woniu.com/static/web20151014/src/images/img5.jpg" alt="" /></li>
+				<li class="pre"><img src="http://heart.woniu.com/static/web20151014/src/images/img4.jpg" alt="" /></li>
+
+			</ul>
+		</div>
+
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.btn').click(function() {
+					var btnIndex = $(this).index(),
+						picElement = $('.wrap ul li'),
+						picNum = picElement.length,
+						lastPic = picElement.eq(picNum - 1).attr('class'),
+						firstPic = picElement.eq(0).attr('class'),
+						temp;
+					if (btnIndex == 0) { //下一张
+						for (var i = picNum; i >= 0; i--) {
+							temp = picElement.eq(i - 1).attr('class');
+							if (i == 0) {
+								picElement.eq(i).attr('class', lastPic);
+							} else {
+								picElement.eq(i).attr('class', temp);
+							}
+						}
+					} else { //上一张
+						for (var j = 0; j < picNum; j++) {
+							temp = picElement.eq(j + 1).attr('class');
+							if (j == picNum - 1) {
+								picElement.eq(j).attr('class', firstPic);
+							} else {
+								picElement.eq(j).attr('class', temp);
+							}
+						}
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

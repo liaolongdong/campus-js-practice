@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面试题总结</title>
+	<script>
+       /* (function foo(i){
+        	if ( i === 3){
+        		return;
+        	}else{
+        		foo(i++);
+        		console.log(i);
+        	}
+        	console.log(i);
+        })(0);//Uncaught RangeError: Maximum call stack size exceeded(…)*/
+		//引用和复制的区别
+		//引用
+		var arr = [1,2,3];
+		var arr1 = arr;
+		arr.push(4);
+		console.log('arr : ' + arr);
+		console.log('arr1 : ' + arr1);
+		arr1.push(5);
+		console.log('arr : ' + arr);
+		console.log('arr1 : ' + arr1);
+		//复制
+		var arr2 = ['white','blue','pink'];
+		var arr3 = arr2.slice();
+		arr3.push('orange');
+		console.log('arr2 : ' + arr2);
+		console.log('arr3 : ' + arr3);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
